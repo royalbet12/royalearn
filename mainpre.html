@@ -1,0 +1,240 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", arial;
+        background-color: #1a1a1a;
+        color: white;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col items-center">
+   
+    <div class="w-full max-w-md bg-gray-900 rounded-lg p-4" style="height: 100%;">
+      <div style="width: 100%; display: flex; justify-content: space-between;"><a href="task.html">Back</a> <button class="text-blue-500" style="display: flex; border: 1px solid rgb(20, 131, 182); border-radius: 10px;    padding: 4px; padding-left: 16px; padding-right: 16px;">45300 users <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1
+         0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+      </svg> </button> <a style="display: flex; align-items: center; justify-content: center; text-align: center;">close<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+      </svg></a></div>
+      
+        <div
+        style="
+          margin-bottom: 30px;
+          display: flex;
+         justify-content: center;
+          align-items: center;
+          font-family: roboto, arial;
+          font-weight: 700;
+          font-size: 16px;
+          width: 100%;
+        "
+      >
+    
+        <a >Royal earn </a>
+        <a
+          ><img
+            style="height: 23px; width: 25px"
+            src="verify-removebg-preview.png"
+        /></a>
+        
+      </div>
+      
+     
+             <script>
+              document.addEventListener('DOMContentLoaded', () => {
+                       const nameInput = document.getElementById('name');
+                       const bioInput = document.getElementById('bio');
+                       const profileImage = document.getElementById('profileImage');
+                       const profileImageInput = document.getElementById('profileImageInput');
+                       const saveButton = document.getElementById('saveButton');
+           
+                       // Load saved data
+                       nameInput.value = localStorage.getItem('name') || '';
+                       bioInput.value = localStorage.getItem('bio') || '';
+                       const savedImage = localStorage.getItem('profileImage');
+                       if (savedImage) {
+                           profileImage.src = savedImage;
+                       }
+           
+                       // Save data on button click
+                       saveButton.addEventListener('click', () => {
+                           localStorage.setItem('name', nameInput.value);
+                           localStorage.setItem('bio', bioInput.value);
+                           alert('Profile saved successfully!');
+                       });
+           
+                       profileImageInput.addEventListener('change', (event) => {
+                           const reader = new FileReader();
+                           reader.onload = () => {
+                               profileImage.src = reader.result;
+                               localStorage.setItem('profileImage', reader.result);
+                           };
+                           reader.readAsDataURL(event.target.files[0]);
+                       });
+                   });
+             </script>
+            </head>
+        
+                <div style="color: white;">
+                 <a>Upload Your Profile</a>
+                 <p>Click the Upload Profile button.</p>  
+                 <p>Choose your profile picture or document from your device.</p>
+                 <p>Fill in the required details and submit.</p>
+                </div>
+             <div class=" p-8 rounded-lg shadow-lg w-full max-w-md">
+               
+              <div class="text-center mb-6">
+               <img alt="Profile picture placeholder" class="w-32 h-32 rounded-full mx-auto mb-4" height="150" id="profileImage" src="https://storage.googleapis.com/a1aa/image/yUYD0vDAvo6ZOB16Oqfe0ehwgc2pyreaKyVcyDzP8oBbbDhQB.jpg" width="150"/>
+               <input class="hidden" id="profileImageInput" type="file"/>
+               <button class="text-blue-500 hover:underline" onclick="document.getElementById('profileImageInput').click()">
+                Change Profile Picture
+               </button>
+              </div>
+              <div class="mb-4">
+               <label class="block text-gray-700" for="name">
+                Name
+               </label>
+               <input class="w-full p-2 border border-gray-300 rounded mt-1 text-black" id="name" type="text"/>
+              </div>
+              <div class="mb-4">
+               <label class="block text-gray-700" for="bio">
+               
+               </label>
+               <p class=" border border-none rounded mt-1" id="bio" ></textarea>
+              </div>
+              <div class="text-center">
+               <button class="bg-blue-500 text-white px-4 py-2 rounded" id="saveButton">
+                Save Profile
+               </button>
+              </div>
+             </div>
+        
+            
+             <div class="flex justify-between text-center" style="margin-top: 56px;">
+              <div class="flex flex-col items-center">
+                <a
+                  href="mycoin.html"
+                  style="
+                    text-align: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                  "
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-house-door"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"
+                    />
+                  </svg>
+      
+                  <p class="text-xs mt-2">HOME</p></a
+                >
+              </div>
+              <div class="flex flex-col items-center">
+                <a
+                  href="task.html"
+                  style="
+                    text-align: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-list-task"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"
+                    />
+                    <path
+                      d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z"
+                    />
+                  </svg>
+                  <p class="text-xs mt-2">TASK</p></a
+                >
+              </div>
+              <div class="flex flex-col items-center">
+                <a
+                  href="mainpre.html"
+                  style="
+                    text-align: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg>
+                  <p class="text-xs mt-2">PROFILE</p></a
+                >
+              </div>
+              <div class="flex flex-col items-center">
+                <a
+                  href="now.html"
+                  style="
+                    text-align: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+                </svg>
+                  <p class="text-xs mt-2">ABOUT</p></a
+                >
+              </div>
+              <div class="flex flex-col items-center">
+                <a
+                  href="new.html"
+                  style="
+                    text-align: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+                  <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
+                </svg>
+                  <p class="text-xs mt-2">WITHDRAW</p></a
+                >
+              </div>
+            </div>
+      </div>
+   
+</body>
+</html>

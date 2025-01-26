@@ -1,0 +1,112 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Profile Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+            const nameInput = document.getElementById('name');
+            const bioInput = document.getElementById('bio');
+            const profileImage = document.getElementById('profileImage');
+            const profileImageInput = document.getElementById('profileImageInput');
+            const saveButton = document.getElementById('saveButton');
+
+            // Load saved data
+            nameInput.value = localStorage.getItem('name') || '';
+            bioInput.value = localStorage.getItem('bio') || '';
+            const savedImage = localStorage.getItem('profileImage');
+            if (savedImage) {
+                profileImage.src = savedImage;
+            }
+
+            // Save data on button click
+            saveButton.addEventListener('click', () => {
+                localStorage.setItem('name', nameInput.value);
+                localStorage.setItem('bio', bioInput.value);
+                alert('Profile saved successfully!');
+            });
+
+            profileImageInput.addEventListener('change', (event) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    profileImage.src = reader.result;
+                    localStorage.setItem('profileImage', reader.result);
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            });
+        });
+  </script>
+ </head>
+ <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div
+    style="
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: roboto, arial;
+      font-weight: 700;
+    "
+  >
+    <a>Royal earn </a>
+    <a
+      ><img
+        style="height: 30px; width: 32px"
+        src="verify-removebg-preview.png"
+    /></a>
+  </div>
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center">
+      <img
+        alt="Profile picture placeholder"
+        class="w-10 h-10 rounded-full"
+        height="40"
+        id="profileImage"
+        src="https://storage.googleapis.com/a1aa/image/yUYD0vDAvo6ZOB16Oqfe0ehwgc2pyreaKyVcyDzP8oBbbDhQB.jpg"
+        width="40"
+      />
+      <div>
+        <p class="text-white font-bold ml-2">
+          <label class="block" for="name"> </label>
+          <input
+            class="w-full p-2 border rounded mt-1"
+            style="background-color: rgb(17, 24, 40); border: none"
+            id="name"
+            type="text"
+          />
+        </p>
+      </div>
+    </div>
+   <div class="text-center mb-6">
+    <img alt="Profile picture placeholder" class="w-32 h-32 rounded-full mx-auto mb-4" height="150" id="profileImage" src="https://storage.googleapis.com/a1aa/image/yUYD0vDAvo6ZOB16Oqfe0ehwgc2pyreaKyVcyDzP8oBbbDhQB.jpg" width="150"/>
+    <input class="hidden" id="profileImageInput" type="file"/>
+    <button class="text-blue-500 hover:underline" onclick="document.getElementById('profileImageInput').click()">
+     Change Profile Picture
+    </button>
+   </div>
+   <div class="mb-4">
+    <label class="block text-gray-700" for="name">
+     Name
+    </label>
+    <input class="w-full p-2 border border-gray-300 rounded mt-1" id="name" type="text"/>
+   </div>
+   <div class="mb-4">
+    <label class="block text-gray-700" for="bio">
+    
+    </label>
+    <p class=" border border-none rounded mt-1" id="bio" ></textarea>
+   </div>
+   <div class="text-center">
+    <button class="bg-blue-500 text-white px-4 py-2 rounded" id="saveButton">
+     Save Profile
+    </button>
+   </div>
+  </div>
+ </body>
+</html>
